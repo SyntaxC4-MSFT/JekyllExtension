@@ -6,7 +6,7 @@
 		<version>0.0.11</version>
 		<authors>Cory Fowler</authors>
 		<licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
-		<projectUrl>https://github.com/SyntaxC4/JekyllExtension</projectUrl>
+		<projectUrl>https://github.com/SyntaxC4-MSFT/JekyllExtension</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Adds Jekyll Support to Azure Web App</description>
 		<iconUrl>https://cfowlersiteextensions.blob.core.windows.net/ico/jekyll.png</iconUrl>
