@@ -49,13 +49,16 @@ IF NOT DEFINED KUDU_SYNC_CMD (
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: Pre deployment stub
+IF DEFINED PRE_DEPLOYMENT_ACTION call "%PRE_DEPLOYMENT_ACTION%"
+IF !ERRORLEVEL! NEQ 0 goto error
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: Build Static Site
-:: ----------
 
 call jekyll build -s "%DEPLOYMENT_SOURCE%" -d "%DEPLOYMENT_TARGET%"
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
 :: Post deployment stub
 IF DEFINED POST_DEPLOYMENT_ACTION call "%POST_DEPLOYMENT_ACTION%"
 IF !ERRORLEVEL! NEQ 0 goto error
