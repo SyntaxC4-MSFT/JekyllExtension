@@ -6,6 +6,10 @@
 /**/RubyDevKit.zip
 /**/config.yml
 
+### Nuget
+
+*.nupkg
+
 ### Windows ###
 # Windows image file caches
 Thumbs.db
