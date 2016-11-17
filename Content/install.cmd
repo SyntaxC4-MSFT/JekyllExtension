@@ -16,10 +16,13 @@ rm RubyDevKit.exe
 
 cd RubyDevKit
 
-call D:\home\SiteExtensions\JekyllExtension\Commands\Ruby-2.2.3\ruby-2.2.2-i386-mingw32\bin\ruby dk.rb init
-echo - D:/home/SiteExtensions/JekyllExtension/Commands/Ruby-2.2.3/ruby-2.2.2-i386-mingw32 >> config.yml
-call D:\home\SiteExtensions\JekyllExtension\Commands\Ruby-2.2.3\ruby-2.2.2-i386-mingw32\bin\ruby dk.rb install
+call %HOME%\SiteExtensions\JekyllExtension\Commands\Ruby-2.2.3\ruby-2.2.2-i386-mingw32\bin\ruby dk.rb init
+echo - %HOME%/SiteExtensions/JekyllExtension/Commands/Ruby-2.2.3/ruby-2.2.2-i386-mingw32 >> config.yml
+call %HOME%\SiteExtensions\JekyllExtension\Commands\Ruby-2.2.3\ruby-2.2.2-i386-mingw32\bin\ruby dk.rb install
 
 ::Install Jekyll
 
-call D:\home\SiteExtensions\JekyllExtension\Commands\Ruby-2.2.3\ruby-2.2.2-i386-mingw32\bin\gem install jekyll
+start /wait %HOME%\SiteExtensions\JekyllExtension\Commands\Ruby-2.2.3\ruby-2.2.2-i386-mingw32\bin\gem install jekyll
+start /wait %HOME%\SiteExtensions\JekyllExtension\Commands\Ruby-2.2.3\ruby-2.2.2-i386-mingw32\bin\gem install kramdown
+start /wait %HOME%\SiteExtensions\JekyllExtension\Commands\Ruby-2.2.3\ruby-2.2.2-i386-mingw32\bin\gem install rdiscount
+start /wait %HOME%\SiteExtensions\JekyllExtension\Commands\Ruby-2.2.3\ruby-2.2.2-i386-mingw32\bin\gem install redcarpet
