@@ -3,11 +3,10 @@ cd Commands
 
 ::Download Dependencies
 curl -L -o Ruby-2.2.3.zip http://dl.bintray.com/oneclick/rubyinstaller/ruby-2.2.2-i386-mingw32.7z
-curl -L -o RubyDevKit.exe http://dl.bintray.com/oneclick/rubyinstaller/defunct/DevKit-tdm-32-4.5.2-20110712-1620-sfx.exe
+start /wait d:\7zip\7za x Ruby-2.2.3.zip -oRuby-2.2.3
 
-::Unzip Files
-d:\7zip\7za x Ruby-2.2.3.zip -oRuby-2.2.3
-d:\7zip\7za x RubyDevKit.exe -oRubyDevKit
+curl -L -o RubyDevKit.exe http://dl.bintray.com/oneclick/rubyinstaller/defunct/DevKit-tdm-32-4.5.2-20110712-1620-sfx.exe
+start /wait d:\7zip\7za x RubyDevKit.exe -oRubyDevKit
 
 ::Clean up Zip Files
 rm Ruby-2.2.3.zip
