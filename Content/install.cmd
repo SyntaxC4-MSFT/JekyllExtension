@@ -9,8 +9,8 @@ curl -L -o RubyDevKit.exe http://dl.bintray.com/oneclick/rubyinstaller/defunct/D
 start /wait d:\7zip\7za x RubyDevKit.exe -oRubyDevKit
 
 ::Clean up Zip Files
-::rm Ruby-2.2.3.zip
-::rm RubyDevKit.exe
+rm Ruby-2.2.3.zip
+rm RubyDevKit.exe
 
 ::Configure RubyDevKit
 
