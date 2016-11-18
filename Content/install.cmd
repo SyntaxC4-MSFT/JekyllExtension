@@ -9,18 +9,20 @@ curl -L -o RubyDevKit.exe http://dl.bintray.com/oneclick/rubyinstaller/defunct/D
 start /wait d:\7zip\7za x RubyDevKit.exe -oRubyDevKit
 
 ::Clean up Zip Files
-rm Ruby-2.2.3.zip
-rm RubyDevKit.exe
+::rm Ruby-2.2.3.zip
+::rm RubyDevKit.exe
 
 ::Configure RubyDevKit
 
 cd RubyDevKit
 
 call %HOME%\SiteExtensions\JekyllExtension\Commands\Ruby-2.2.3\ruby-2.2.2-i386-mingw32\bin\ruby dk.rb init
-echo - %HOME%/SiteExtensions/JekyllExtension/Commands/Ruby-2.2.3/ruby-2.2.2-i386-mingw32 >> config.yml
+echo - %HOMEDRIVE%/home/SiteExtensions/JekyllExtension/Commands/Ruby-2.2.3/ruby-2.2.2-i386-mingw32 >> config.yml
 call %HOME%\SiteExtensions\JekyllExtension\Commands\Ruby-2.2.3\ruby-2.2.2-i386-mingw32\bin\ruby dk.rb install
 
 ::Install Jekyll
+
+SET SSL_CERT_FILE=%PROGRAMFILES(x86)%\git\usr\ssl\certs\ca-bundle.crt
 
 call %HOME%\SiteExtensions\JekyllExtension\Commands\Ruby-2.2.3\ruby-2.2.2-i386-mingw32\bin\gem install jekyll
 call %HOME%\SiteExtensions\JekyllExtension\Commands\Ruby-2.2.3\ruby-2.2.2-i386-mingw32\bin\gem install kramdown
