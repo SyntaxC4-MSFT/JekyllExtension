@@ -28,3 +28,8 @@ call %HOME%\SiteExtensions\JekyllExtension\Commands\Ruby-2.2.3\ruby-2.2.2-i386-m
 call %HOME%\SiteExtensions\JekyllExtension\Commands\Ruby-2.2.3\ruby-2.2.2-i386-mingw32\bin\gem install kramdown
 call %HOME%\SiteExtensions\JekyllExtension\Commands\Ruby-2.2.3\ruby-2.2.2-i386-mingw32\bin\gem install rdiscount
 call %HOME%\SiteExtensions\JekyllExtension\Commands\Ruby-2.2.3\ruby-2.2.2-i386-mingw32\bin\gem install redcarpet
+
+::Install WebJob
+
+mkdir %HOME%\site\wwwroot\app_data\jobs\triggered
+mv %HOME%\SiteExtensions\JekyllExtension\Hooks\jekyll-build %HOME%\site\wwwroot\app_data\jobs\triggered\jekyll-build
