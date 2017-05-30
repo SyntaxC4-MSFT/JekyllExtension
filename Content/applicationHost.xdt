@@ -6,6 +6,7 @@
         <add name="SCM_COMMAND_IDLE_TIMEOUT" value="600" xdt:Locator="Match(name)" xdt:Transform="InsertIfMissing" />
         <add name="PATH" value="%PATH%;D:\home\SiteExtensions\JekyllExtension\Commands\Ruby-2.2.3\ruby-2.2.2-i386-mingw32\bin;D:\home\SiteExtensions\JekyllExtension\Commands\RubyDevKit" xdt:Locator="Match(name)" xdt:Transform="InsertIfMissing" />
         <add name="APPSETTING_COMMAND" value="D:\home\SiteExtensions\JekyllExtension\Hooks\deploy.cmd" xdt:Locator="Match(name)" xdt:Transform="InsertIfMissing" />
+        <add name="INSTALL_GEMS" value="jekyll kramdown rdiscount redcarpet" />
         <add name="SSL_CERT_FILE" value="%PROGRAMFILES(x86)%\git\usr\ssl\certs\ca-bundle.crt" />
       </environmentVariables>
     </runtime>

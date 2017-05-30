@@ -6,6 +6,10 @@
 /**/RubyDevKit.zip
 /**/config.yml
 
+### Azure Resource Management
+
+/**/azuredeploy.params.json
+
 ### Nuget
 
 *.nupkg
@@ -61,6 +65,7 @@ Temporary Items
 
 ### Linux ###
 *~
+.bash_history
 
 # KDE directory preferences
 .directory

@@ -1,0 +1,102 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "siteName": {
+            "type": "string",
+            "defaultValue": "[concat('jekyllsite-', uniqueString(resourceGroup().id))]"
+        },
+        "siteSKU": {
+            "type": "string",
+            "defaultValue": "F1",
+            "allowedValues": [
+                "F1",
+                "B1",
+                "S1",
+                "P1"
+            ],
+            "metadata": {
+                "description": "The pricing plan for your App Service, more information at https://azure.microsoft.com/en-us/pricing/details/app-service"
+            }
+        },
+        "source": {
+            "type": "object",
+            "metadata": {
+                "description": "Pass source control information for repository and branch"
+            }
+        },
+        "additional-gems": {
+            "type": "string",
+            "metadata": {
+                "description": "Space delimited list of gems to install. default: jekyll kramdown rdiscount redcarpet"
+            }
+        }
+    },
+    "variables": {
+        "hostingPlanName": "[concat('siteName')]",
+        "extensionName": "JekyllExtension",
+        "gems": "[concat('jekyll kramdown rdiscount redcarpet ', parameters('additional-gems'))]"
+    },
+    "resources": [
+        {
+            "apiVersion": "2015-08-01",
+            "name": "[variables('hostingPlanName')]",
+            "type": "Microsoft.Web/serverfarms",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "[parameters('siteSKU')]"
+            }
+        },
+        {
+            "apiVersion": "2015-08-01",
+            "name": "[parameters('siteName')]",
+            "type": "Microsoft.Web/sites",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+            ],
+            "properties": {
+                "serverFarmId": "[variables('hostingPlanName')]"
+            },
+            "resources": [
+                {
+                    "apiVersion": "2015-08-01",
+                    "name": "appsettings",
+                    "type": "config",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]"
+                    ],
+                    "properties": {
+                        "SSL_CERT_FILE": "%PROGRAMFILES(x86)%\\git\\usr\\ssl\\certs\\ca-bundle.crt",
+                        "SCM_COMMAND_IDLE_TIMEOUT": "600",
+                        "COMMAND": "D:\\home\\SiteExtensions\\JekyllExtension\\Hooks\\deploy.cmd",
+                        "INSTALL_GEMS": "[variables('gems')]"
+                    }
+                },
+                {
+                    "apiVersion": "2015-08-01",
+                    "name": "[variables('extensionName')]",
+                    "type": "siteextensions",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]"
+                    ],
+                    "properties": {}
+                },
+                {
+                    "apiVersion": "2015-08-01",
+                    "name": "web",
+                    "type": "sourcecontrols",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]",
+                        "[resourceId('Microsoft.Web/Sites/siteextensions', parameters('siteName'), variables('extensionName'))]"
+                    ],
+                    "properties": {
+                        "RepoUrl": "[parameters('source').repository]",
+                        "branch": "[parameters('source').branch]",
+                        "IsManualIntegration": true
+                    }
+                }
+            ]
+        }
+    ]
+}
