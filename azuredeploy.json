@@ -33,7 +33,7 @@
         }
     },
     "variables": {
-        "hostingPlanName": "[concat('siteName')]",
+        "hostingPlanName": "[concat(parameters('siteName'), '-plan')]",
         "extensionName": "JekyllExtension",
         "gems": "[concat('jekyll kramdown rdiscount redcarpet ', parameters('additional-gems'))]"
     },
@@ -78,7 +78,8 @@
                     "name": "[variables('extensionName')]",
                     "type": "siteextensions",
                     "dependsOn": [
-                        "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]"
+                        "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]",
+                        "[resourceId('Microsoft.Web/Sites/config', parameters('siteName'), 'appsettings')]"
                     ],
                     "properties": {}
                 },
