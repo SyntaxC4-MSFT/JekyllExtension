@@ -1,4 +1,6 @@
-mkdir Commands
+IF NOT EXIST Commands (
+    mkdir Commands
+)
 cd Commands
 
 ::Download Dependencies
